@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Screen Time</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('tv-icon.png'), :rel => 'icon', :type =>  'image/png' %>
+
+  </head>
+
+  <nav>
+    <%= link_to "home", root_path %>
+    <% if signed_in? %>
+    <%= link_to "sign out",destroy_user_session_path, method: :delete %>
+    <%= link_to "watched", watcheds_path %>
+    <% end%>
+
+    <% if !signed_in? %>
+    <%= link_to "sign up", new_user_registration_path%>
+    <%= link_to "sign in", new_user_session_path %>
+    <% end %>
+
+    <%= form_tag("/", method: "get") do %>
+    <%= text_field_tag(:q)%>
+    <%= submit_tag("search")%>
+    <% end %>
+  </nav>
+
+  <body>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </body>
+</html>

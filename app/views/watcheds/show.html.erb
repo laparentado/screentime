@@ -1,0 +1,6 @@
+<h2><%= @movie.title%></h2>
+<b>Overview:</b> <%= @movie.overview%><br>
+<b>Notes:</b> <%= @movie.notes%><br>
+<a href="http://www.themoviedb.org/movie/<%=@movie.tmdb_id%>">The Movie Database Page</a>
+<hr>
+<%= link_to "edit movie", edit_watched_path %>

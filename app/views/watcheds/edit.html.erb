@@ -1,0 +1,7 @@
+<h2>Edit Movie</h2>
+<%= form_for @movie do |f| %>
+<%= f.text_field :notes %>
+<%= f.submit "update notes"%>
+<% end %>
+
+<%= link_to "delete movie", watched_path, method: :delete%>

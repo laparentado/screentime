@@ -1,0 +1,12 @@
+<h2><%= @user.username %>'s Watched List</h2>
+<% @watched.each do |w| %>
+<a href="/watcheds/<%=w.id%>"><%= w.title %></a><br>
+<%= w.overview %>
+<hr>
+<% end %>
+
+<% @watched_show.each do |s| %>
+<a href="/watched_shows/<%=s.id%>"><%= s.title%></a><br>
+<%= s.overview%>
+<hr>
+<% end %>

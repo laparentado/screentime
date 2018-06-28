@@ -1,0 +1,44 @@
+<% if params[:q].present? %>
+<h2>Search Results for '<%= params[:q]%>'</h2>
+<a href="#tv">skip to tv shows</a>
+
+<div id="movies"><h3><u>Movies</u></h3>
+
+<% if params[:q].present? %>
+<%= @movies%>
+<% @movies.each do |m| %>
+<b><%= m.title %></b> (<%= m.release_date %>)<br>
+<%= m.overview %>
+<%= form_for :watched, url:{action: 'assign', controller: 'watcheds'} do |f| %>
+<%= hidden_field_tag "title", m.title %>
+<%= hidden_field_tag "tmdb_id", m.id.to_s %>
+<%= hidden_field_tag "overview", m.overview%>
+Notes:<%= f.text_field :notes %>
+<%= f.submit "add to watched" %>
+<% end %>
+<hr>
+<% end %>
+<% end %>
+</div>
+
+<div id="tv"><h3><u>TV Shows</u></h3>
+<%= @shows%>
+<% @shows.each do |s| %>
+<b><%= s.name %></b><br>
+<%= s.overview %>
+<%= form_for :watched_show, url:{action: 'shown', controller: 'watcheds'} do |f| %>
+<%= hidden_field_tag "title", s.name %>
+<%= hidden_field_tag "tmdb_id", s.id.to_s%>
+<%=hidden_field_tag "overview", s.overview%>
+Notes:<%= f.text_field :notes %>
+<%= f.submit "add to watched"%>
+<% end %>
+<hr>
+<% end %>
+</div>
+
+<% end%>
+
+<% if !params[:q].present?%>
+<h1>Welcome to Screen Time</h1>
+<% end %>

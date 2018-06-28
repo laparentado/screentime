@@ -1,0 +1,7 @@
+<h2>Edit Show</h2>
+<%= form_for @show do |f| %>
+<%= f.text_field :notes %>
+<%= f.submit "update notes"%>
+<% end %>
+
+<%= link_to "delete show", watched_show_path, method: :delete%>

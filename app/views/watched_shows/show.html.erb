@@ -1,0 +1,6 @@
+<h2><%= @show.title %></h2>
+<b>Overview:</b> <%= @show.overview%><br>
+<b>Notes:</b> <%= @show.notes%><br>
+<a href="https://www.themoviedb.org/tv/<%=@show.tmdb_id%>">The Movie Database Page</a>
+<hr>
+<%= link_to "edit show", edit_watched_show_path %>
