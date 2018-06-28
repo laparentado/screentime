@@ -16,6 +16,7 @@
     <% if signed_in? %>
     <%= link_to "sign out",destroy_user_session_path, method: :delete %>
     <%= link_to "watched", watcheds_path %>
+    <%= link_to "favorites", favorites_path%>
     <% end%>
 
     <% if !signed_in? %>

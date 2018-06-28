@@ -1,0 +1,4 @@
+<h2>Favorites</h2>
+<% @favs.each do |f| %>
+<a href="/favorites/<%=f.id%>"><%= f.title %></a>
+<%end%>

@@ -2,11 +2,23 @@
 <% @watched.each do |w| %>
 <a href="/watcheds/<%=w.id%>"><%= w.title %></a><br>
 <%= w.overview %>
+<%= form_for :favorite, url:{action: 'favorite', controller: 'watcheds'} do |f|%>
+<%= hidden_field_tag "title", w.title%>
+<%= hidden_field_tag "overview", w.overview %>
+Notes:<%= f.text_field :notes %>
+<%= f.submit "add to favorites" %>
+<% end %>
 <hr>
 <% end %>
 
 <% @watched_show.each do |s| %>
 <a href="/watched_shows/<%=s.id%>"><%= s.title%></a><br>
 <%= s.overview%>
+<%= form_for :favorite, url:{action: 'favorite', controller: 'watcheds'} do |f|%>
+<%= hidden_field_tag "title", s.title%>
+<%= hidden_field_tag "overview", s.overview %>
+Notes:<%= f.text_field :notes %>
+<%= f.submit "add to favorites" %>
+<% end %>
 <hr>
 <% end %>

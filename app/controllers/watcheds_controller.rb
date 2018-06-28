@@ -30,6 +30,19 @@ class WatchedsController < ApplicationController
     end
   end
 
+  def favorite
+    f = Favorite.new(fav_params)
+    f.title = params[:title]
+    f.overview = params[:overview]
+    f.user_id = current_user.id
+    if f.save
+      flash[:notice] = "added to favorites"
+      redirect_back(fallback_location: root_path)
+    else
+      render "/search/index"
+    end
+  end
+
   def index
     @user = User.find(current_user.id)
     @watched = Watched.where(user_id: current_user.id)
@@ -66,4 +79,8 @@ class WatchedsController < ApplicationController
   def show_params
     params.require(:watched_show).permit(:user_id, :tmdb_id, :title, :overview, :notes)
   end
+  def fav_params
+    params.require(:favorite).permit(:user_id, :title, :overview, :notes)
+  end
+
 end
