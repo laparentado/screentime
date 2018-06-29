@@ -1,0 +1,21 @@
+.watched_wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 15px;
+}
+    
+.watched_movies{
+    grid-column-start:1;
+    grid-column-end: 2;
+    border: 1px solid;
+    overflow: auto;
+    height: 475px;
+}
+    
+.watched_shows{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    border: 1px solid;
+    overflow: auto;
+    height: 475px;
+}

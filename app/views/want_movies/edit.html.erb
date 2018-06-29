@@ -1,2 +1,7 @@
-<h1>WantMovies#edit</h1>
-<p>Find me in app/views/want_movies/edit.html.erb</p>
+<h2>Edit <%=@movie.title%></h2>
+<%= form_for @movie do |f| %>
+<%= f.text_field :notes %>
+<%= f.submit "update notes"%>
+<% end %>
+
+<%= link_to "delete movie", want_movie_path, method: :delete%>

@@ -1,9 +1,12 @@
-<h2>Favorites</h2>
+<h2><%=@user.username%>'s Favorites</h2>
 <% @array = [] %>
 
 <% @favs.each do |f| %>
-<a href="/favorites/<%=f.id%>"><%= f.title %></a><br>
 <% @array.push(f.title) %>
 <%end%>
 
-<%= @array.sample() %>
+<b>Random Favorite:</b> <%= @array.sample() %>
+<hr>
+<% @favs.each do |f|%>
+<a href="/favorites/<%=f.id%>"><%= f.title %></a><br>
+<% end %>

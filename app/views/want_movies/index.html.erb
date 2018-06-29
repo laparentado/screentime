@@ -1,10 +1,26 @@
-<h2>Movies to Watch</h2>
+<h2>Movies <%=@user.username%> Wants to Watch</h2>
 <% @want_movie.each do |m| %>
 <a href="/want_movies/<%=m.id%>"><%= m.title %></a>
+<%= m.overview %>
+<%= form_for :watched, url:{action: 'watch_movie', controller: 'want_movies'} do |f| %>
+<%= hidden_field_tag "title", m.title %>
+<%= hidden_field_tag "tmdb_id", m.tmdb_id %>
+<%= hidden_field_tag "overview", m.overview %>
+Notes: <%= f.text_field :notes %>
+<%= f.submit "moved to watched list"%>
+<% end %>
 <hr>
 <% end %>
-<h2>Shows to Watch</h2>
+<h2>Shows <%= @user.username%> Wants to Watch</h2>
 <% @want_show.each do |s| %>
 <a href="/want_shows/<%=s.id%>"><%= s.title %></a>
+<%= s.overview%>
+<%= form_for :watched_show, url:{action: 'watch_show', controller: 'want_shows'} do |f|%>
+<%= hidden_field_tag "title", s.title%>
+<%= hidden_field_tag "tmdb_id", s.tmdb_id%>
+<%= hidden_field_tag "overview", s.overview%>
+Notes: <%= f.text_field :notes%>
+<%= f.submit "moved to watched list"%>
+<% end%>
 <hr>
 <% end %>

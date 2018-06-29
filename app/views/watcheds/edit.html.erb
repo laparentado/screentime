@@ -1,4 +1,4 @@
-<h2>Edit Movie</h2>
+<h2>Edit <%=@movie.title%></h2>
 <%= form_for @movie do |f| %>
 <%= f.text_field :notes %>
 <%= f.submit "update notes"%>

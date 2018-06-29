@@ -1,0 +1,38 @@
+body{
+    font-family: work sans;
+    background-image: url("dark.png")
+}
+
+h1,h2,h3{
+    font-family: vidaloka;
+}
+
+hr{
+    border-top: 1px dotted;
+}
+
+b{
+    font-family: vidaloka;
+}
+
+input[type=submit]{
+    text-transform: uppercase;
+    font-size: 8px;
+    background-color: #8A8899;
+    border-radius: 5px;
+    color: white;
+}
+
+.content{
+    background-color: #F1EFEE;
+    opacity: .75;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 2%;
+    margin-top: 75px;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    overflow: auto;
+    height: 550px;
+}

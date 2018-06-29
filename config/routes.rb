@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   post "favorite" => "watcheds#favorite"
   post "list_movie" => "want_movies#list_movie"
   post "list_show" => "want_shows#list_show"
+  post "watch_movie" => "want_movies#watch_movie"
+  post "watch_show" => "want_shows#watch_show"
 end

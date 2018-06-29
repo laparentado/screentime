@@ -8,32 +8,45 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag asset_path('tv-icon.png'), :rel => 'icon', :type =>  'image/png' %>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,600|Vidaloka" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
 
   </head>
 
   <nav>
-    <%= link_to "home", root_path %>
+    <div class="links">
+    <div class="link"><i class="fa fa-film"></i>
+    <%= link_to "home", root_path %></div>
     <% if signed_in? %>
-    <%= link_to "sign out",destroy_user_session_path, method: :delete %>
-    <%= link_to "watched", watcheds_path %>
-    <%= link_to "favorites", favorites_path%>
+    <div class="link"><i class="fa fa-list"></i></div>
+    <%= link_to "want to watch", want_movies_path%>
+    <div class="link"><i class="fa fa-check-circle"></i>
+    <%= link_to "watched", watcheds_path %></div>
+    <div class="link"><i class="fa fa-heart"></i>
+    <%= link_to "favorites", favorites_path%></div>
+    <div class="link"><i class="fa fa-power-off"></i>
+    <%= link_to "sign out",destroy_user_session_path, method: :delete %></div>
+
     <% end%>
 
     <% if !signed_in? %>
-    <%= link_to "sign up", new_user_registration_path%>
-    <%= link_to "sign in", new_user_session_path %>
-    <% end %>
+    <div class="link"><i class="fa fa-user-plus"></i>
+    <%= link_to "sign up", new_user_registration_path%></div>
+    <div class="link"><i class="fa fa-user-circle"></i>
+    <%= link_to "sign in", new_user_session_path %></div>
+    <% end %></div>
 
-    <%= form_tag("/", method: "get") do %>
+    <div class="searchbar"><%= form_tag("/", method: "get") do %>
     <%= text_field_tag(:q)%>
     <%= submit_tag("search")%>
-    <% end %>
+    <% end %></div>
   </nav>
 
   <body>
-
+<div class="content">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <%= yield %></div>
   </body>
 </html>
