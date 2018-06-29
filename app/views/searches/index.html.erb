@@ -5,7 +5,6 @@
 <div id="movies"><h3><u>Movies</u></h3>
 
 <% if params[:q].present? %>
-<%= @movies%>
 <% @movies.each do |m| %>
 <b><%= m.title %></b> (<%= m.release_date %>)<br>
 <%= m.overview %>
@@ -16,13 +15,19 @@
 Notes:<%= f.text_field :notes %>
 <%= f.submit "add to watched" %>
 <% end %>
+<%= form_for :want_movies, url:{action: 'list_movie', controller: 'want_movies'} do |f| %>
+<%= hidden_field_tag "title", m.title %>
+<%= hidden_field_tag "tmdb_id", m.id.to_s %>
+<%= hidden_field_tag "overview", m.overview%>
+Notes:<%= f.text_field :notes %>
+<%= f.submit "add to wants" %>
+<% end %>
 <hr>
 <% end %>
 <% end %>
 </div>
 
 <div id="tv"><h3><u>TV Shows</u></h3>
-<%= @shows%>
 <% @shows.each do |s| %>
 <b><%= s.name %></b><br>
 <%= s.overview %>
@@ -32,6 +37,13 @@ Notes:<%= f.text_field :notes %>
 <%=hidden_field_tag "overview", s.overview%>
 Notes:<%= f.text_field :notes %>
 <%= f.submit "add to watched"%>
+<% end %>
+<%= form_for :want_shows, url:{action: 'list_show', controller: 'want_shows'} do |f| %>
+<%= hidden_field_tag "title", s.name %>
+<%= hidden_field_tag "tmdb_id", s.id.to_s %>
+<%= hidden_field_tag "overview", s.overview%>
+Notes:<%= f.text_field :notes %>
+<%= f.submit "add to wants" %>
 <% end %>
 <hr>
 <% end %>

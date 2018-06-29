@@ -1,4 +1,9 @@
 <h2>Favorites</h2>
+<% @array = [] %>
+
 <% @favs.each do |f| %>
-<a href="/favorites/<%=f.id%>"><%= f.title %></a>
+<a href="/favorites/<%=f.id%>"><%= f.title %></a><br>
+<% @array.push(f.title) %>
 <%end%>
+
+<%= @array.sample() %>

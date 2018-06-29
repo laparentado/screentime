@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   has_many :watcheds
   has_many :watched_shows
+  has_many :favorites
+  has_many :want_movies
+  has_many :want_shows
 end

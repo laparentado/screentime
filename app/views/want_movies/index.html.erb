@@ -1,0 +1,10 @@
+<h2>Movies to Watch</h2>
+<% @want_movie.each do |m| %>
+<a href="/want_movies/<%=m.id%>"><%= m.title %></a>
+<hr>
+<% end %>
+<h2>Shows to Watch</h2>
+<% @want_show.each do |s| %>
+<a href="/want_shows/<%=s.id%>"><%= s.title %></a>
+<hr>
+<% end %>
