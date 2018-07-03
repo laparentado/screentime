@@ -1,6 +1,7 @@
 body{
     font-family: source sans pro;
-    background-image: url("light2.png")
+    background-image: url("light2.png");
+    color: black;
 }
 
 h1,h2,h3{
@@ -13,19 +14,20 @@ hr{
 
 b{
     font-family: alice;
+    color: #09283f;
 }
 
 input[type=submit]{
     text-transform: uppercase;
     font-family: source sans pro;
     font-size: 11px;
-    background-color: #B5C6B1;
+    background-color: #09283f;
     border-radius: 5px;
     color: white;
 }
 
 input[type=submit]:hover{
-    color: black;
+    color: gold;
 }
 
 input[type=text]{
@@ -34,7 +36,7 @@ input[type=text]{
 }
 
 .content{
-    background-color: #E5AC82;
+    background-color: #939398;
     opacity: .85;
     overflow: auto;
     width: 90%;
