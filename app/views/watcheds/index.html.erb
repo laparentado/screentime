@@ -7,6 +7,7 @@
 <%= form_for :favorite, url:{action: 'favorite', controller: 'watcheds'} do |f|%>
 <%= hidden_field_tag "title", w.title%>
 <%= hidden_field_tag "overview", w.overview %>
+<%=hidden_field_tag "poster", w.poster%>
 Notes:<%= f.text_field :notes %>
 <%= f.submit "add to favorites" %>
 <% end %>
@@ -14,13 +15,14 @@ Notes:<%= f.text_field :notes %>
 <% end %></div>
 
 <div class="watched_shows">
-<div class="watched_shows_head"><h3>Shows</h3></div>
+<div class="watched_shows_head"><h3>TV Series</h3></div>
 <% @watched_show.each do |s| %>
 <a href="/watched_shows/<%=s.id%>"><%= s.title%></a><br>
 <%= s.overview%>
 <%= form_for :favorite, url:{action: 'favorite', controller: 'watcheds'} do |f|%>
 <%= hidden_field_tag "title", s.title%>
 <%= hidden_field_tag "overview", s.overview %>
+<%= hidden_field_tag "poster", s.poster%>
 Notes:<%= f.text_field :notes %>
 <%= f.submit "add to favorites" %>
 <% end %>

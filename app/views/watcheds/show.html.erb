@@ -1,6 +1,8 @@
-<h2><%= @movie.title%></h2>
+<center><h2><%= @movie.title%></h2></center>
+<div class="watched_movies"><img src="https://image.tmdb.org/t/p/w200<%= @movie.poster %>"></img>
 <b>Overview:</b> <%= @movie.overview%><br>
 <b>Notes:</b> <%= @movie.notes%><br>
-<a href="http://www.themoviedb.org/movie/<%=@movie.tmdb_id%>">The Movie Database Page</a>
+<a href="http://www.themoviedb.org/movie/<%=@movie.tmdb_id%>" target="_blank">The Movie Database Page</a>
 <hr>
 <%= link_to "edit movie", edit_watched_path %>
+<br><%= link_to "back", :back %></div>

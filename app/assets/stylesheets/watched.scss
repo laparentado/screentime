@@ -9,7 +9,10 @@
     grid-column-end: 2;
     border: 1px solid;
     overflow: auto;
-    height: 475px;
+    height: 450px;
+    padding: 5px;
+    background-color: #F8F9F9;
+
 }
     
 .watched_shows{
@@ -17,5 +20,13 @@
     grid-column-end: 3;
     border: 1px solid;
     overflow: auto;
-    height: 475px;
+    height: 450px;
+    padding: 5px;
+    background-color: #F8F9F9;
+
+}
+
+img{
+    float: left;
+    padding: 5px;
 }

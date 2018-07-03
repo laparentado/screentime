@@ -8,6 +8,7 @@ class WatchedsController < ApplicationController
     a.overview = params[:overview]
     a.tmdb_id = params[:tmdb_id]
     a.user_id = current_user.id 
+    a.poster = params[:poster]
     if a.save
       flash[:notice] = "added movie to watched list"
       redirect_back(fallback_location: root_path)
@@ -22,6 +23,7 @@ class WatchedsController < ApplicationController
     s.overview = params[:overview]
     s.tmdb_id = params[:tmdb_id]
     s.user_id = current_user.id
+    s.poster = params[:poster]
     if s.save
       flash[:notice] = "added show to watched list"
       redirect_back(fallback_location: root_path)
@@ -34,6 +36,7 @@ class WatchedsController < ApplicationController
     f = Favorite.new(fav_params)
     f.title = params[:title]
     f.overview = params[:overview]
+    f.poster = params[:poster]
     f.user_id = current_user.id
     if f.save
       flash[:notice] = "added to favorites"
@@ -74,13 +77,13 @@ class WatchedsController < ApplicationController
 
   private
   def watched_params
-    params.require(:watched).permit(:user_id, :tmdb_id, :title, :overview, :notes)
+    params.require(:watched).permit(:user_id, :tmdb_id, :title, :overview, :notes, :poster)
   end
   def show_params
-    params.require(:watched_show).permit(:user_id, :tmdb_id, :title, :overview, :notes)
+    params.require(:watched_show).permit(:user_id, :tmdb_id, :title, :overview, :notes, :poster)
   end
   def fav_params
-    params.require(:favorite).permit(:user_id, :title, :overview, :notes)
+    params.require(:favorite).permit(:user_id, :title, :overview, :notes, :poster)
   end
 
 end

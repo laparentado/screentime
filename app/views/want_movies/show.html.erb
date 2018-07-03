@@ -1,6 +1,6 @@
-<h2>Want to Watch: <%= @movie.title%></h2>
-<b>Overview:</b> <%= @movie.overview%><br>
+<center><h2>Want to Watch: <%= @movie.title%></h2></center>
+<div class="watched_movies"><b>Overview:</b> <%= @movie.overview%><br>
 <b>Notes:</b> <%= @movie.notes%><br>
-<a href="http://www.themoviedb.org/movie/<%=@movie.tmdb_id%>">The Movie Database Page</a>
+<a href="http://www.themoviedb.org/movie/<%=@movie.tmdb_id%>" target="_blank">The Movie Database Page</a>
 <hr>
-<%= link_to "edit movie", edit_want_movie_path %>
+<%= link_to "edit movie", edit_want_movie_path %></div>

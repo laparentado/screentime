@@ -8,7 +8,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag asset_path('tv-icon.png'), :rel => 'icon', :type =>  'image/png' %>
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,600|Vidaloka" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,600|Limelight|Vidaloka" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
 
@@ -16,6 +16,7 @@
 
   <nav>
     <div class="links">
+    <a href="http://themoviedb.org"><%= image_tag("tmdblogo.png", {:style => "width:25px;margin-top:-5px;"}) %></a>  
     <div class="link"><i class="fa fa-film"></i>
     <%= link_to "home", root_path %></div>
     <% if signed_in? %>
@@ -49,4 +50,5 @@
     <p class="alert"><%= alert %></p>
     <%= yield %></div>
   </body>
+
 </html>

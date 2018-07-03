@@ -1,16 +1,19 @@
 <% if params[:q].present? %>
-<h2>Search Results for '<%= params[:q]%>'</h2>
-<a href="#tv">skip to tv shows</a>
+<center><h2>Search Results for '<%= params[:q]%>'</h2>
+<a href="#tv">skip to tv series</a></center>
 
-<div id="movies"><h3><u>Movies</u></h3>
+<div class="watched_movies"><div id="movies"><h3><u>Movies</u></h3>
 
 <% if params[:q].present? %>
 <% @movies.each do |m| %>
 <b><%= m.title %></b> (<%= m.release_date %>)<br>
 <%= m.overview %>
+
+<% if signed_in? %>
 <%= form_for :watched, url:{action: 'assign', controller: 'watcheds'} do |f| %>
 <%= hidden_field_tag "title", m.title %>
 <%= hidden_field_tag "tmdb_id", m.id.to_s %>
+<%= hidden_field_tag "poster", m.poster_path%>
 <%= hidden_field_tag "overview", m.overview%>
 Notes:<%= f.text_field :notes %>
 <%= f.submit "add to watched" %>
@@ -19,8 +22,11 @@ Notes:<%= f.text_field :notes %>
 <%= hidden_field_tag "title", m.title %>
 <%= hidden_field_tag "tmdb_id", m.id.to_s %>
 <%= hidden_field_tag "overview", m.overview%>
+<%= hidden_field_tag "poster", m.poster_path%>
+
 Notes:<%= f.text_field :notes %>
 <%= f.submit "add to wants" %>
+<% end %>
 <% end %>
 <hr>
 <% end %>
@@ -31,10 +37,13 @@ Notes:<%= f.text_field :notes %>
 <% @shows.each do |s| %>
 <b><%= s.name %></b><br>
 <%= s.overview %>
+<% if signed_in? %>
 <%= form_for :watched_show, url:{action: 'shown', controller: 'watcheds'} do |f| %>
 <%= hidden_field_tag "title", s.name %>
 <%= hidden_field_tag "tmdb_id", s.id.to_s%>
 <%=hidden_field_tag "overview", s.overview%>
+<%= hidden_field_tag "poster", s.poster_path%>
+
 Notes:<%= f.text_field :notes %>
 <%= f.submit "add to watched"%>
 <% end %>
@@ -42,8 +51,11 @@ Notes:<%= f.text_field :notes %>
 <%= hidden_field_tag "title", s.name %>
 <%= hidden_field_tag "tmdb_id", s.id.to_s %>
 <%= hidden_field_tag "overview", s.overview%>
+<%= hidden_field_tag "poster", s.poster_path%>
+
 Notes:<%= f.text_field :notes %>
 <%= f.submit "add to wants" %>
+<% end %>
 <% end %>
 <hr>
 <% end %>
@@ -52,5 +64,69 @@ Notes:<%= f.text_field :notes %>
 <% end%>
 
 <% if !params[:q].present?%>
-<h1>Welcome to Screen Time</h1>
+<center><h1>Welcome to Screen Time</h1>
+<% if !signed_in?%> 
+<i>Sign Up or Sign In to Get Started!</i></center>
 <% end %>
+
+<div class="watched_wrapper">
+<div class="watched_movies">
+<h2>Top Rated Movies</h2>
+<% @popular.each do |p| %>
+<div class="popwrap">
+<a href="https://themoviedb.org/movie/<%=p.id%>" target="_blank"><%= p.title%></a><Br>
+<img src="https://image.tmdb.org/t/p/w200<%=p.poster_path%>"></img>
+<% if signed_in? %>
+<%= form_for :watched, url:{action: 'assign', controller: 'watcheds'} do |f| %>
+<%= hidden_field_tag "title", p.title %>
+<%= hidden_field_tag "tmdb_id", p.id.to_s %>
+<%= hidden_field_tag "poster", p.poster_path%>
+<%= hidden_field_tag "overview", p.overview%>
+Notes:<%= f.text_field :notes %>
+<%= f.submit "add to watched" %>
+<% end %>
+<%= form_for :want_movies, url:{action: 'list_movie', controller: 'want_movies'} do |f| %>
+<%= hidden_field_tag "title", p.title %>
+<%= hidden_field_tag "tmdb_id", p.id.to_s %>
+<%= hidden_field_tag "overview", p.overview%>
+<%= hidden_field_tag "poster", p.poster_path%>
+
+Notes:<%= f.text_field :notes %>
+<%= f.submit "add to wants" %>
+<% end %>
+<% end%></div>
+<% end %>
+</div>
+
+<div class="watched_shows">
+<h2>Top Rated TV Shows</h2>
+<% @popularTV.each do |t|%>
+<div class="popwrap">
+<a href="https://themoviedb.org/tv<%=t.id%>" target="_blank"><%= t.name%></a>
+<img src="https://image.tmdb.org/t/p/w200<%=t.poster_path%>"></img>
+<% if signed_in? %>
+<%= form_for :watched_show, url:{action: 'shown', controller: 'watcheds'} do |f| %>
+<%= hidden_field_tag "title", t.name %>
+<%= hidden_field_tag "tmdb_id", t.id.to_s%>
+<%=hidden_field_tag "overview", t.overview%>
+<%= hidden_field_tag "poster", t.poster_path%>
+
+Notes:<%= f.text_field :notes %>
+<%= f.submit "add to watched"%>
+<% end %>
+<%= form_for :want_shows, url:{action: 'list_show', controller: 'want_shows'} do |f| %>
+<%= hidden_field_tag "title", t.name %>
+<%= hidden_field_tag "tmdb_id", t.id.to_s %>
+<%= hidden_field_tag "overview", t.overview%>
+<%= hidden_field_tag "poster", t.poster_path%>
+
+Notes:<%= f.text_field :notes %>
+<%= f.submit "add to wants" %>
+<% end %>
+<% end %>
+</div>
+<% end %>
+</div>
+<% end %>
+</div>
+</div>

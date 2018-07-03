@@ -12,6 +12,7 @@ class WantMoviesController < ApplicationController
     m.overview = params[:overview]
     m.tmdb_id = params[:tmdb_id]
     m.user_id = current_user.id 
+    m.poster = params[:poster]
     if m.save
       flash[:notice] = "added movie to want list"
       redirect_back(fallback_location: root_path)
@@ -26,6 +27,7 @@ class WantMoviesController < ApplicationController
     m.overview = params[:overview]
     m.tmdb_id = params[:tmdb_id]
     m.user_id = current_user.id 
+    m.poster = params[:poster]
     if m.save
       @d = WantMovie.where(tmdb_id: m.tmdb_id)
       @id = @d.first.id 
@@ -62,9 +64,9 @@ class WantMoviesController < ApplicationController
 
   private
   def list_movie_params
-    params.require(:want_movies).permit(:user_id, :tmdb_id, :title, :overview, :notes)
+    params.require(:want_movies).permit(:user_id, :tmdb_id, :title, :overview, :notes, :poster)
   end
   def watch_movie_params
-    params.require(:watched).permit(:user_id, :tmdb_id, :title, :overview, :notes)
+    params.require(:watched).permit(:user_id, :tmdb_id, :title, :overview, :notes, :poster)
   end
 end
