@@ -1,10 +1,10 @@
 body{
-    font-family: work sans;
+    font-family: source sans pro;
     background-image: url("light2.png")
 }
 
 h1,h2,h3{
-    font-family: limelight;
+    font-family: playfair display;
 }
 
 hr{
@@ -12,19 +12,29 @@ hr{
 }
 
 b{
-    font-family: vidaloka;
+    font-family: alice;
 }
 
 input[type=submit]{
     text-transform: uppercase;
+    font-family: source sans pro;
     font-size: 11px;
-    background-color: #E5AC82;
+    background-color: #B5C6B1;
     border-radius: 5px;
     color: white;
 }
 
+input[type=submit]:hover{
+    color: black;
+}
+
+input[type=text]{
+    font-family: source sans pro;
+    font-size: 12px;
+}
+
 .content{
-    background-color: #B5C6B1;
+    background-color: #E5AC82;
     opacity: .85;
     overflow: auto;
     width: 90%;

@@ -8,7 +8,7 @@
 <%= hidden_field_tag "title", w.title%>
 <%= hidden_field_tag "overview", w.overview %>
 <%=hidden_field_tag "poster", w.poster%>
-Notes:<%= f.text_field :notes %>
+<%= f.text_field :notes, :placeholder=> "notes" %>
 <%= f.submit "add to favorites" %>
 <% end %>
 <hr>
@@ -23,7 +23,7 @@ Notes:<%= f.text_field :notes %>
 <%= hidden_field_tag "title", s.title%>
 <%= hidden_field_tag "overview", s.overview %>
 <%= hidden_field_tag "poster", s.poster%>
-Notes:<%= f.text_field :notes %>
+<%= f.text_field :notes, :placeholder=> "notes" %>
 <%= f.submit "add to favorites" %>
 <% end %>
 <hr>

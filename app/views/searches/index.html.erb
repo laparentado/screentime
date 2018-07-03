@@ -44,7 +44,7 @@ Notes:<%= f.text_field :notes %>
 <%=hidden_field_tag "overview", s.overview%>
 <%= hidden_field_tag "poster", s.poster_path%>
 
-Notes:<%= f.text_field :notes %>
+<%= f.text_field :notes, :placeholder=> "notes" %>
 <%= f.submit "add to watched"%>
 <% end %>
 <%= form_for :want_shows, url:{action: 'list_show', controller: 'want_shows'} do |f| %>
@@ -53,7 +53,7 @@ Notes:<%= f.text_field :notes %>
 <%= hidden_field_tag "overview", s.overview%>
 <%= hidden_field_tag "poster", s.poster_path%>
 
-Notes:<%= f.text_field :notes %>
+<%= f.text_field :notes, :placeholder=> "notes" %>
 <%= f.submit "add to wants" %>
 <% end %>
 <% end %>
@@ -82,7 +82,7 @@ Notes:<%= f.text_field :notes %>
 <%= hidden_field_tag "tmdb_id", p.id.to_s %>
 <%= hidden_field_tag "poster", p.poster_path%>
 <%= hidden_field_tag "overview", p.overview%>
-Notes:<%= f.text_field :notes %>
+<%= f.text_field :notes, :placeholder=> "notes" %>
 <%= f.submit "add to watched" %>
 <% end %>
 <%= form_for :want_movies, url:{action: 'list_movie', controller: 'want_movies'} do |f| %>
@@ -91,7 +91,7 @@ Notes:<%= f.text_field :notes %>
 <%= hidden_field_tag "overview", p.overview%>
 <%= hidden_field_tag "poster", p.poster_path%>
 
-Notes:<%= f.text_field :notes %>
+<%= f.text_field :notes, :placeholder=> "notes" %>
 <%= f.submit "add to wants" %>
 <% end %>
 <% end%></div>
@@ -111,7 +111,7 @@ Notes:<%= f.text_field :notes %>
 <%=hidden_field_tag "overview", t.overview%>
 <%= hidden_field_tag "poster", t.poster_path%>
 
-Notes:<%= f.text_field :notes %>
+<%= f.text_field :notes, :placeholder=> "notes" %>
 <%= f.submit "add to watched"%>
 <% end %>
 <%= form_for :want_shows, url:{action: 'list_show', controller: 'want_shows'} do |f| %>
@@ -120,7 +120,7 @@ Notes:<%= f.text_field :notes %>
 <%= hidden_field_tag "overview", t.overview%>
 <%= hidden_field_tag "poster", t.poster_path%>
 
-Notes:<%= f.text_field :notes %>
+<%= f.text_field :notes, :placeholder=> "notes" %>
 <%= f.submit "add to wants" %>
 <% end %>
 <% end %>
