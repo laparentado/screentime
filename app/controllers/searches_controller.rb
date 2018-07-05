@@ -6,8 +6,12 @@ class SearchesController < ApplicationController
     @shows = Tmdb::TV.find(params[:q])
 
     end
-    @popular = Tmdb::Movie.top_rated
-    @popularTV = Tmdb::TV.top_rated
+    @popular = Tmdb::Movie.popular
+    @popularTV = Tmdb::TV.popular
+    @configuration = Tmdb::Configuration.new
+    @configuration.base_url
+    @configuration.poster_sizes
+    @configuration.profile_sizes
 
  
   end

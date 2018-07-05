@@ -1,8 +1,18 @@
 <center><h2><%= @movie.title%></h2></center>
-<div class="watched_movies"><img src="https://image.tmdb.org/t/p/w200<%= @movie.poster %>"></img>
+<div class="watched_showpage_wrapper">
+<div class="watched_showpage_movies">
+<%= image_tag (@configuration.base_url+@configuration.poster_sizes[1]+@movie.poster) %>
 <b>Overview:</b> <%= @movie.overview%><br>
 <b>Notes:</b> <%= @movie.notes%><br>
-<a href="http://www.themoviedb.org/movie/<%=@movie.tmdb_id%>" target="_blank">The Movie Database Page</a>
 <hr>
-<%= link_to "edit movie", edit_watched_path %>
-<br><%= link_to "back", :back %></div>
+<a href="http://www.themoviedb.org/movie/<%=@movie.tmdb_id%>" target="_blank">The Movie Database Page</a> •
+<%= link_to "Add Notes", edit_watched_path %> • 
+<%= link_to "Go Back", :back %>
+</div>
+<div class="watched_showpage_recs"><h3>Recommendations (click on poster to see details) </h3>
+<% @recs.each do |r| %>
+<div class="recs">
+<a href="http://www.themoviedb.org/movie/<%=r.id%>" target="_blank"><%= image_tag(@configuration.base_url+@configuration.poster_sizes[0]+r.poster_path) %></a>
+</div>
+<% end %>
+</div>

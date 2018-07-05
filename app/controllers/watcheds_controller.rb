@@ -54,6 +54,13 @@ class WatchedsController < ApplicationController
 
   def show
     @movie = Watched.find(params[:id])
+    tmdb_id = Watched.find(params[:id]).tmdb_id
+    @recs = Tmdb::Movie.similar_movies(tmdb_id)
+
+    @configuration = Tmdb::Configuration.new
+    @configuration.base_url
+    @configuration.poster_sizes
+    @configuration.profile_sizes
   end
 
   def edit

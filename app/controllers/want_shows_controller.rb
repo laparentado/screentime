@@ -39,6 +39,10 @@ class WantShowsController < ApplicationController
 
   def show
     @show = WantShow.find(params[:id])
+    @configuration = Tmdb::Configuration.new
+    @configuration.base_url
+    @configuration.poster_sizes
+    @configuration.profile_sizes
   end
 
   def edit

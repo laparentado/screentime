@@ -42,6 +42,10 @@ class WantMoviesController < ApplicationController
 
   def show
     @movie = WantMovie.find(params[:id])
+    @configuration = Tmdb::Configuration.new
+    @configuration.base_url
+    @configuration.poster_sizes
+    @configuration.profile_sizes
   end
 
   def edit

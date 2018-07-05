@@ -1,6 +1,10 @@
 class WatchedShowsController < ApplicationController
   def show
     @show = WatchedShow.find(params[:id])
+    @configuration = Tmdb::Configuration.new
+    @configuration.base_url
+    @configuration.poster_sizes
+    @configuration.profile_sizes
   end
 
   def edit
