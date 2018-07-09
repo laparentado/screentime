@@ -9,12 +9,13 @@
 <%= link_to "Add Notes", edit_watched_path %> • 
 <%= link_to "Go Back", :back %>
 </div>
-<div class="watched_showpage_recs"><h3>Similar to <%=@movie.title%></h3>
+<center><h3>Similar to <%=@movie.title%></h3></center>
+<div class="recs_wrapper">
 <% @recs.each do |r| %>
 <div class="recs">
 
 <%= image_tag(@configuration.base_url+@configuration.poster_sizes[0]+r.poster_path) %>
-<br>
+
 <a href="http://www.themoviedb.org/movie/<%=r.id%>" target="_blank"><%= r.title %></a><br>
 <%= r.overview %><br>
 <% if signed_in? %>
@@ -24,7 +25,7 @@
 <%= hidden_field_tag "poster", r.poster_path%>
 <%= hidden_field_tag "overview", r.overview%>
 <%= f.text_field :notes, :placeholder=> "notes" %>
-<%= f.submit "add to watched" %>
+<%= f.submit "watched" %>
 <% end %>
 <%= form_for :want_movies, url:{action: 'list_movie', controller: 'want_movies'} do |f| %>
 <%= hidden_field_tag "title", r.title %>
@@ -33,7 +34,7 @@
 <%= hidden_field_tag "poster", r.poster_path%>
 
 <%= f.text_field :notes, :placeholder=> "notes" %>
-<%= f.submit "add to wants" %>
+<%= f.submit "want" %>
 <% end %>
 <% end %>
 </div>

@@ -5,10 +5,13 @@
 <% @array.push(f.title) %>
 <%end%>
 
-<div class="favs">
 <center><b>Random Favorite:</b> <%= @array.sample() %></center>
 <hr>
-<% @favs.each_with_index do |f, index|%>
-<%= index +1%>. <a href="/favorites/<%=f.id%>"><%= f.title %></a><br>
+<div class="pop_wrap">
+<% @favs.each do |f|%>
+<div class="pop">
+<a href="/favorites/<%=f.id%>"><%= f.title %></a><br>
+<%= image_tag (@configuration.base_url+@configuration.poster_sizes[2]+f.poster) %>
+</div>
 <% end %>
 </div>

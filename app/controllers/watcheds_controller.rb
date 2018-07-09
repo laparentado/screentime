@@ -53,6 +53,8 @@ class WatchedsController < ApplicationController
   end
 
   def show
+    Tmdb::Api.key(ENV["movie_db_key"])
+
     @movie = Watched.find(params[:id])
     tmdb_id = Watched.find(params[:id]).tmdb_id
     @recs = Tmdb::Movie.similar_movies(tmdb_id)

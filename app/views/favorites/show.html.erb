@@ -1,5 +1,6 @@
 <center><h2><%= @fav.title %></h2></center>
-<div class="watched_movies"><img src="https://image.tmdb.org/t/p/w200<%= @fav.poster %>"></img>
+<div class="watched_movies">
+<%= image_tag (@configuration.base_url+@configuration.poster_sizes[2]+@fav.poster) %>
 <b>Overview:</b> <%= @fav.overview%><br>
 <b>Notes:</b> <%= @fav.notes%><hr>
 <%= link_to "Add Notes", edit_favorite_path %> •

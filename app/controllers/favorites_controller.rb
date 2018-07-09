@@ -2,10 +2,21 @@ class FavoritesController < ApplicationController
   def index
     @user = User.find(current_user.id)
     @favs = Favorite.where(user_id: current_user.id)
+    @configuration = Tmdb::Configuration.new
+    @configuration.base_url
+    @configuration.poster_sizes
+    @configuration.profile_sizes
+    Tmdb::Api.key(ENV["movie_db_key"])
+
   end
 
   def show
     @fav = Favorite.find(params[:id])
+    @configuration = Tmdb::Configuration.new
+    @configuration.base_url
+    @configuration.poster_sizes
+    @configuration.profile_sizes
+    Tmdb::Api.key(ENV["movie_db_key"])
   end
 
   def edit

@@ -1,6 +1,19 @@
-.popwrap{
+.pop_page{
+
+}
+.pop_wrap{
+    margin-top: 10px;
+    padding: 5px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.pop{
     display: inline-block;
-    width: 250px;
-    align-items: left;
-    text-align: left;
+    border: 1px solid;
+    white-space: normal;
+    background-color: #F8F9F9;
+    padding: 5px;
+    text-align: center;
 }

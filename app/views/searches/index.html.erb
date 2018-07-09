@@ -68,11 +68,11 @@
 <i>Sign Up or Sign In to Get Started!</i></center>
 <% end %>
 
-<div class="watched_wrapper">
-<div class="watched_movies">
-<h2>Popular Movies</h2>
+<div class="pop_page">
+<center><h2>Popular Movies</h2></center>
+<div class="pop_wrap">
 <% @popular.each do |p| %>
-<div class="popwrap">
+<div class="pop">
 <a href="https://themoviedb.org/movie/<%=p.id%>" target="_blank"><%= p.title%></a><Br>
 <%= image_tag (@configuration.base_url+@configuration.poster_sizes[2]+p.poster_path) %>
 <% if signed_in? %>
@@ -82,7 +82,7 @@
 <%= hidden_field_tag "poster", p.poster_path%>
 <%= hidden_field_tag "overview", p.overview%>
 <%= f.text_field :notes, :placeholder=> "notes" %>
-<%= f.submit "add to watched" %>
+<%= f.submit "watched" %>
 <% end %>
 <%= form_for :want_movies, url:{action: 'list_movie', controller: 'want_movies'} do |f| %>
 <%= hidden_field_tag "title", p.title %>
@@ -91,17 +91,17 @@
 <%= hidden_field_tag "poster", p.poster_path%>
 
 <%= f.text_field :notes, :placeholder=> "notes" %>
-<%= f.submit "add to wants" %>
+<%= f.submit "want" %>
 <% end %>
 <% end%></div>
 <% end %>
 </div>
 
-<div class="watched_shows">
-<h2>Popular TV Shows</h2>
+<center><h2>Popular TV Shows</h2></center>
+<div class="pop_wrap">
 <% @popularTV.each do |t|%>
-<div class="popwrap">
-<a href="https://themoviedb.org/tv<%=t.id%>" target="_blank"><%= t.name%></a>
+<div class="pop">
+<a href="https://themoviedb.org/tv<%=t.id%>" target="_blank"><%= t.name%></a><br>
 <%= image_tag (@configuration.base_url+@configuration.poster_sizes[2]+t.poster_path) %>
 <% if signed_in? %>
 <%= form_for :watched_show, url:{action: 'shown', controller: 'watcheds'} do |f| %>
@@ -111,7 +111,7 @@
 <%= hidden_field_tag "poster", t.poster_path%>
 
 <%= f.text_field :notes, :placeholder=> "notes" %>
-<%= f.submit "add to watched"%>
+<%= f.submit "watched"%>
 <% end %>
 <%= form_for :want_shows, url:{action: 'list_show', controller: 'want_shows'} do |f| %>
 <%= hidden_field_tag "title", t.name %>
@@ -120,7 +120,7 @@
 <%= hidden_field_tag "poster", t.poster_path%>
 
 <%= f.text_field :notes, :placeholder=> "notes" %>
-<%= f.submit "add to wants" %>
+<%= f.submit "want" %>
 <% end %>
 <% end %>
 </div>
