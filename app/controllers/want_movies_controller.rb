@@ -56,7 +56,7 @@ class WantMoviesController < ApplicationController
   def update
     @movie = WantMovie.find(params[:id])
     if @movie.update(list_movie_params)
-      redirect_to "/want_movies"
+      redirect_back(fallback_location: root_path)
     else
       render edit_want_movie_path
     end

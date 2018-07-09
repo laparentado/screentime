@@ -54,7 +54,7 @@ class WantShowsController < ApplicationController
   def update
     @show = WantShow.find(params[:id])
     if @show.update(list_show_params)
-      redirect_to "/want_movies"
+      redirect_back(fallback_location: root_path)
     else
       render edit_want_show_path
     end

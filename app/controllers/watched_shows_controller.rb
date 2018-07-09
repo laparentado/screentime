@@ -16,7 +16,7 @@ class WatchedShowsController < ApplicationController
   def update
     @show = WatchedShow.find(params[:id])
     if @show.update(show_params)
-      redirect_to "/watcheds"
+      redirect_back(fallback_location: root_path)
     else
       render edit_watched_show_path
     end
