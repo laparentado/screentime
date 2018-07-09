@@ -29,7 +29,7 @@ class FavoritesController < ApplicationController
   def update
     @fav = Favorite.find(params[:id])
     if @fav.update(fav_params)
-      redirect_back(fallback_location: root_path)
+      redirect_to "/favorites"
     else
       render edit_favorite_path
     end

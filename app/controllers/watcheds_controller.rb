@@ -72,7 +72,7 @@ class WatchedsController < ApplicationController
   def update
     @movie = Watched.find(params[:id])
     if @movie.update(watched_params)
-      redirect_back(fallback_location: root_path)
+      redirect_to "/watcheds"
     else
       render edit_watched_path
     end
