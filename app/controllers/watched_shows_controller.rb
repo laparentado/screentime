@@ -1,6 +1,8 @@
 class WatchedShowsController < ApplicationController
   def show
     @show = WatchedShow.find(params[:id])
+    Tmdb::Api.key(ENV["movie_db_key"])
+
     @configuration = Tmdb::Configuration.new
     @configuration.base_url
     @configuration.poster_sizes
