@@ -4,7 +4,7 @@
 <b>Overview:</b> <%= @show.overview%><br>
 <b>Notes:</b> <%= @show.notes%><br>
 <hr>
-<a href="http://www.themoviedb.org/movie/<%=@show.tmdb_id%>" target="_blank">The Movie Database Page</a> •
+<a href="http://www.themoviedb.org/tv/<%=@show.tmdb_id%>" target="_blank">The Movie Database Page</a> •
 <%= link_to "Add Notes", edit_watched_show_path %> • 
 <%= link_to "Go Back", :back %>
 </div>
