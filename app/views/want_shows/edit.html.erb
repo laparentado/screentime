@@ -1,2 +1,7 @@
-<h1>WantShow#edit</h1>
-<p>Find me in app/views/want_show/edit.html.erb</p>
+<h2>Edit <%=@show.title%></h2>
+<%= form_for @show do |f| %>
+<%= f.text_field :notes %>
+<%= f.submit "update notes"%>
+<% end %>
+
+<%= link_to "delete show", want_show_path, method: :delete%>

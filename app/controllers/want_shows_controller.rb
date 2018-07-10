@@ -53,20 +53,23 @@ class WantShowsController < ApplicationController
 
   def update
     @show = WantShow.find(params[:id])
-    if @show.update(list_show_params)
-      redirect_to "/want_movies"
+    if @show.update(edit_show_params)
+      redirect_to want_show_path
     else
       render edit_want_show_path
     end
   end
 
-  def detmdb_id
+  def destroy
     @show = WantShow.find(params[:id])
     @show.destroy
-    redirect_to "/want_movies"
+    redirect_to want_movies_path
   end
 
   private
+  def edit_show_params
+    params.require(:want_show).permit(:user_id, :tmdb_id, :title, :overview, :notes, :poster)
+  end
   def list_show_params
     params.require(:want_shows).permit(:user_id, :tmdb_id, :title, :overview, :notes, :poster)
   end

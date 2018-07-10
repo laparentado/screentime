@@ -1,7 +1,8 @@
 <center><h2><%= @user.username %>'s Watched List</h2></center>
 <div class="watched_wrapper"><div class="watched_movies">
 <div class="watched_movies_head"><h3>Movies</h3></div>
-<% @watched.each do |w| %>
+<% sorted = @watched.all.order(:title) %>
+<% sorted.each do |w| %>
 <a href="/watcheds/<%=w.id%>"><%= w.title %></a><br>
 <%= w.overview %>
 <%= form_for :favorite, url:{action: 'favorite', controller: 'watcheds'} do |f|%>
@@ -16,7 +17,8 @@
 
 <div class="watched_shows">
 <div class="watched_shows_head"><h3>TV Series</h3></div>
-<% @watched_show.each do |s| %>
+<% sorted_show = @watched_show.all.order(:title) %>
+<% sorted_show.each do |s| %>
 <a href="/watched_shows/<%=s.id%>"><%= s.title%></a><br>
 <%= s.overview%>
 <%= form_for :favorite, url:{action: 'favorite', controller: 'watcheds'} do |f|%>

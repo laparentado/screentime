@@ -55,8 +55,8 @@ class WantMoviesController < ApplicationController
   end
   def update
     @movie = WantMovie.find(params[:id])
-    if @movie.update(list_movie_params)
-      redirect_to "/want_movies"
+    if @movie.update(edit_movie_params)
+      redirect_to want_movie_path
     else
       render edit_want_movie_path
     end
@@ -71,6 +71,9 @@ class WantMoviesController < ApplicationController
   private
   def list_movie_params
     params.require(:want_movies).permit(:user_id, :tmdb_id, :title, :overview, :notes, :poster)
+  end
+  def edit_movie_params
+    params.require(:want_movie).permit(:user_id, :tmdb_id, :title, :overview, :notes, :poster)
   end
   def watch_movie_params
     params.require(:watched).permit(:user_id, :tmdb_id, :title, :overview, :notes, :poster)
